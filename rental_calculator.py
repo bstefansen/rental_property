@@ -1,16 +1,17 @@
-HOUSE_PRICE = 300000
-DOWN_PAYMENT = 20000
+HOUSE_PRICE = 200000
+LISTING_PRICE = 200000
+DOWN_PAYMENT = 40000
 INTEREST_RATE = 0.04
-MONTHLY_RENT = 2600 
-MONTHLY_EXPENSES = 500
+MONTHLY_RENT = 2000
+MONTHLY_EXPENSES = 600
+PMI_RATE = 0.01
+MONTHLY_INTEREST = (INTEREST_RATE * (LISTING_PRICE - DOWN_PAYMENT)) / 12
 
 
-
-MONTHLY_INTEREST = (INTEREST_RATE * HOUSE_PRICE) / 12
 annual_rent = MONTHLY_RENT*12
 annual_expenses = MONTHLY_EXPENSES*12
 annual_interest = MONTHLY_INTEREST*12
-monthly_pmi = (0.01 * HOUSE_PRICE) / 12 if DOWN_PAYMENT < (HOUSE_PRICE * 0.2) else 0
+monthly_pmi = (PMI_RATE * LISTING_PRICE) / 12 if DOWN_PAYMENT < (LISTING_PRICE * 0.2) else 0
 annual_pmi = monthly_pmi * 12
 total_expenses = annual_expenses + annual_interest + annual_pmi
 noi = annual_rent - total_expenses
